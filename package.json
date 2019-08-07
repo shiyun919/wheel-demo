@@ -23,5 +23,6 @@
   "homepage": "https://github.com/shiyun919/wheel-demo#readme",
   "dependencies": {
     "vue": "^2.6.10"
-  }
+  },
+  "devDependencies": {}
 }
