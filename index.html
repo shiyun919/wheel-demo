@@ -15,7 +15,7 @@
         #app {
             margin: 20px 20px;
         }
-        :root {
+        :root {  /*把:root换成html 也同样可以*/
             --button-height: 32px;
             --font-size: 14px;
             --button-background: #fff;
@@ -29,37 +29,14 @@
             font-size: var(--font-size);
         }
     </style>
-    <style>
-        .g-button {
-            font-size: var(--font-size);
-            height: var(--button-height);
-            padding: 0px 1em;
-            background: var(--button-background);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-        }
-        .g-button:hover {
-            border: 1px solid var(--boeder-color-hover);
-        }
-        .g-button:active {
-            background: var(--button-active-background);
-        }
-        .g-button:focus {
-            outline: none;
-        }
-    </style>
+
 </head>
 <body>
     <div id="app">
         <g-button></g-button>
     </div>
 
-    <script src="./node_modules/vue/dist/vue.min.js"></script>
-    <script src="./button.js"></script>
-    <script>
-        new Vue({
-            el: '#app',
-        })
-    </script>
+    <script src="./src/app.js"></script>
+
 </body>
 </html>
