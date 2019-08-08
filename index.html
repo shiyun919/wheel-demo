@@ -12,10 +12,12 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         #app {
             margin: 20px 20px;
         }
-        :root {  /*把:root换成html 也同样可以*/
+
+        :root { /*把:root换成html 也同样可以*/
             --button-height: 32px;
             --font-size: 14px;
             --button-background: #fff;
@@ -25,18 +27,37 @@
             --border-color: #999;
             --boeder-color-hover: #666;
         }
+
         body {
             font-size: var(--font-size);
+        }
+    </style>
+    <style>
+        .icon {
+            width: 1.5em;
+            height: 1.5em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
         }
     </style>
 
 </head>
 <body>
-    <div id="app">
-        <g-button></g-button>
-    </div>
+<div id="app">
+    <g-button>
+        按钮
+    </g-button>
+    <g-button icon="settings" icon-position="left">
+        按钮
+    </g-button>
+    <g-button icon="settings" icon-position="right">
+        按钮
+    </g-button>
+</div>
 
-    <script src="./src/app.js"></script>
+<script src="./src/app.js"></script>
+<script src="//at.alicdn.com/t/font_1339968_z4iuny00mf.js"></script>
 
 </body>
 </html>
