@@ -17,10 +17,10 @@
 
 <style lang="scss">
     .g-icon {
-        width: 1.5em;
-        height: 1.5em;
+        width: 22px;
+        height: 22px;
         vertical-align: -0.15em;
-        fill: currentColor;
+        fill: #797979;
         overflow: hidden;
     }
 

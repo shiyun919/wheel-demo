@@ -5,6 +5,7 @@
     <!--<button class="g-button" :class="{'icon-right': true}">-->
     <!--<button class="g-button" :class="{'icon-undefined': true}">-->
         <g-icon class="icon" v-if="icon" :name="icon"></g-icon>
+        <g-icon name="loading"></g-icon>
         <div class="content">
             <slot></slot> <!--slot不能添加class 所以只能添加div 给div添加class-->
         </div>
@@ -43,6 +44,14 @@
 
 <!--css文件-->
 <style lang="scss">
+    @keyframes  {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
     .g-button {
         font-size: var(--font-size);
         height: var(--button-height);
@@ -55,7 +64,7 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        vertical-align: middle;
+        vertical-align:top;
         &:hover { //&指的是.g-button
             border: 1px solid var(--boeder-color-hover);
         }
@@ -80,6 +89,9 @@
             > .content {
                 order: 1;
             }
+        }
+        .loading {
+            animation: spin 1s infinite linear;  //infinite无限的  linear线性的
         }
         //&.icon-right .icon {
         //    order: 2;
