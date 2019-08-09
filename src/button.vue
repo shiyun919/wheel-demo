@@ -20,7 +20,27 @@
 <!--js文件-->
 <script>
     export default {
-        props: ['icon', 'iconPosition']  //iconPosition 的值为left或right
+        //第一种写法：
+        //props: ['icon', 'iconPosition']  //iconPosition 的值为left或right
+
+        //第二种写法
+        props: {
+            icon: '',
+            iconPosition: {
+                type: String,   //值得类型
+                default: 'left',  //默认值
+                validator(value) {  //可写成validator: function(value) {}
+                    //console.log(value)  // value的值就是用户传给iconPosition的值
+                    //return !(value !== 'left' && value !== 'right');   //下面if-else四行的简化版
+                    if (value !== 'left' && value !== 'right'){  // && 而且， ||或
+                        return false
+                    }else {
+                        return true
+                    }
+                }
+            }
+
+        }
     }
 </script>
 
