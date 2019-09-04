@@ -1,11 +1,11 @@
 <!--html文件-->
 <template>
-    <button class="g-button" :class="{[`icon-${iconPosition}`]: true}">
+    <button class="g-button" :class="{[`icon-${iconPosition}`]: true}" v-on:click="$emit('click')">
     <!--<button class="g-button" :class="{'icon-left': true}">--><!--icon在左边-->
     <!--<button class="g-button" :class="{'icon-right': true}">-->
     <!--<button class="g-button" :class="{'icon-undefined': true}">-->
-        <g-icon class="icon" v-if="icon" :name="icon"></g-icon>
-        <g-icon name="loading"></g-icon>
+        <g-icon class="icon" v-if="icon && !loading" :name="icon"></g-icon>
+        <g-icon class="loading icon" v-if="loading" name="loading"></g-icon>
         <div class="content">
             <slot></slot> <!--slot不能添加class 所以只能添加div 给div添加class-->
         </div>
@@ -23,6 +23,10 @@
         //第二种写法
         props: {
             icon: '',
+             loading: {
+                type: Boolean,   //值得类型
+                default: false
+            },
             iconPosition: {
                 type: String,   //值得类型
                 default: 'left',  //默认值
@@ -44,7 +48,7 @@
 
 <!--css文件-->
 <style lang="scss">
-    @keyframes  {
+    @keyframes spin {
         0% {
             transform: rotate(0deg);
         }
@@ -76,7 +80,7 @@
         }
         > .icon {
             order: 1;
-            margin-right: 0.25em;
+            margin-right: 1px;
         }
         > .content {
             order: 2;
@@ -84,14 +88,14 @@
         &.icon-right {
             > .icon {
                 order: 2;
-                margin: 0 0 0 0.25em;
+                margin: 0 0 0 1px;
             }
             > .content {
                 order: 1;
             }
         }
         .loading {
-            animation: spin 1s infinite linear;  //infinite无限的  linear线性的
+            animation: spin 1.3s infinite linear;  //infinite无限的  linear线性的
         }
         //&.icon-right .icon {
         //    order: 2;

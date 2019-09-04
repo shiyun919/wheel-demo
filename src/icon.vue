@@ -17,8 +17,8 @@
 
 <style lang="scss">
     .g-icon {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
         vertical-align: -0.15em;
         fill: #797979;
         overflow: hidden;
