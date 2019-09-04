@@ -84,6 +84,7 @@
         }
         > .content {
             order: 2;
+            margin-top: -1px;
         }
         &.icon-right {
             > .icon {
