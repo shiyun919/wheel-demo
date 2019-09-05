@@ -61,7 +61,6 @@
         height: var(--button-height);
         color: var(--color);
         padding: 0 12px;
-        margin-right: 4px;
         background: var(--button-background);
         border: 1px solid var(--border-color);
         border-radius: var(--border-radius);
