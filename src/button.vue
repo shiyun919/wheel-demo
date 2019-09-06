@@ -16,7 +16,11 @@
 
 <!--js文件-->
 <script>
+    import Icon from './icon'
     export default {
+        components: {
+            'g-icon': Icon
+        },
         //第一种写法：
         //props: ['icon', 'iconPosition']  //iconPosition 的值为left或right
 
