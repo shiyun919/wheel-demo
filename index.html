@@ -64,12 +64,15 @@
         <g-input value="张三"></g-input>
         <g-input value="李四" disabled></g-input>
         <!-- <g-input value="李四" v-bind:disabled="true"></g-input> -->
-        <g-input value="王五" readonly=></g-input>
+        <g-input value="王五" readonly></g-input>
         <!-- <g-input value="王五" v-bind:readonly="true"></g-input> -->
         
     </div>
     <div class="box">
         <g-input value="赵" error="姓名不能少于两个字"></g-input>
+    </div>
+    <div class="box">
+        <g-input value="赵" v-on:change="inputChange"></g-input>
     </div>
 </div>
 

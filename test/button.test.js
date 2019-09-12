@@ -24,7 +24,7 @@ const expect = chai.expect;
          const Constructor = Vue.extend(Button)
          const vm = new Constructor({
          propsData: {
-             icon: 'settings',
+             icon: 'loading',
              loading: true
          }
          }).$mount()
@@ -73,7 +73,7 @@ const expect = chai.expect;
          const callback = sinon.fake();
 
          vm.$on('click', callback)
-         vm.$el.click()
+         vm.$el.click()  //点击触发click事件
          expect(callback).to.have.been.called
 
      })

@@ -1,7 +1,12 @@
 <template>
     <div class="wrapper" v-bind:class={error}>
         <!-- <div class="wrapper" v-bind:class="{error: error}"> 如果父组件存在error，子组件就有一个class为erro的类 -->
-        <input type="text" :value="value" :disabled="disabled" :readonly="readonly">
+        <input type="text" :value="value" :disabled="disabled" :readonly="readonly" 
+        v-on:change="$emit('change', $event)"
+        @input="$emit('input', $event)"
+        @focus="$emit('focus', $event)"
+        @blur="$emit('blur', $event)"
+        >
         <!-- <input type="text" v-bind:value="value" v-bind:disabled="disabled" v-bind:readonly="readonly"> 等价于上面的写法 -->
         <template v-if="error">
             <g-icon name="gantanhao" class="icon-error"></g-icon>
