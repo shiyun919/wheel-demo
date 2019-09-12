@@ -15,7 +15,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .g-icon {
         width: 20px;
         height: 20px;
