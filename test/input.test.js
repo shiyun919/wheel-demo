@@ -1,146 +1,80 @@
 const expect = chai.expect;
  import Vue from 'vue'
- import Input from '../src/input'
+ import Button from '../src/button'
 
  Vue.config.productionTip = false
  Vue.config.devtools = false
 
- describe('Input', () => {
+ describe('Button', () => {
      it('存在.', () => {
-         expect(Input).to.be.ok   //期待input组件存在
+         expect(Button).to.be.ok
      })
-
-     //测试属性
-     describe('props', ()=>{
-        it('可以接收value.', () => {
-            const Constructor = Vue.extend(Input)
-            const vm = new Constructor({
-            propsData: {
-                value: '1234'
-            }
-            }).$mount()
-            const inputElement = vm.$el.querySelector('input')
-            expect(inputElement.value).to.equal('1234')
-            vm.$destroy()
-        })
-        it('可以接收disabled.', () => {
-           const Constructor = Vue.extend(Input)
-           const vm = new Constructor({
-           propsData: {
-               disabled: true
-           }
-           }).$mount()
-           const inputElement = vm.$el.querySelector('input')
-           expect(inputElement.disabled).to.equal(true)
-           vm.$destroy()
-       })
-       it('可以接收readonly.', () => {
-           const Constructor = Vue.extend(Input)
-           const vm = new Constructor({
-           propsData: {
-               readonly: true
-           }
-           }).$mount()
-           const inputElement = vm.$el.querySelector('input')
-           expect(inputElement.readOnly).to.equal(true)
-           vm.$destroy()
-       })
-       it('可以接收error', () => {
-           const Constructor = Vue.extend(Input)
-           const vm = new Constructor({
-           propsData: {
-               error: '你输入有错误'
-           }
-           }).$mount()
-           const useElement = vm.$el.querySelector('use')
-           expect(useElement.getAttribute('xlink:href')).to.equal('#i-gantanhao')
-   
-           const errorMassage = vm.$el.querySelector('.errorMessage')
-           expect(errorMassage.innerText).to.equal('你输入有错误')
-           vm.$destroy()
-       })
+     it('可以设置icon.', () => {
+         const Constructor = Vue.extend(Button)
+         const vm = new Constructor({
+         propsData: {
+             icon: 'settings'
+         }
+         }).$mount()
+         const useElement = vm.$el.querySelector('use')
+         expect(useElement.getAttribute('xlink:href')).to.equal('#i-settings')
+         vm.$destroy()
      })
-     
+     it('可以设置loading.', () => {
+         const Constructor = Vue.extend(Button)
+         const vm = new Constructor({
+         propsData: {
+             icon: 'loading',
+             loading: true
+         }
+         }).$mount()
+         const useElements = vm.$el.querySelectorAll('use')
+         expect(useElements.length).to.equal(1)
+         expect(useElements[0].getAttribute('xlink:href')).to.equal('#i-loading')
+         vm.$destroy()
+     })
+     it('icon 默认的 order 是 1', () => {
+         const div = document.createElement('div')
+         document.body.appendChild(div)
+         const Constructor = Vue.extend(Button)
+         const vm = new Constructor({
+         propsData: {
+             icon: 'settings',
+         }
+         }).$mount(div)
+         const icon = vm.$el.querySelector('svg')
+         expect(getComputedStyle(icon).order).to.eq('1')
+         vm.$el.remove()
+         vm.$destroy()
+     })
+     it('设置 iconPosition 可以改变 order', () => {
+         const div = document.createElement('div')
+         document.body.appendChild(div)
+         const Constructor = Vue.extend(Button)
+         const vm = new Constructor({
+         propsData: {
+             icon: 'settings',
+             iconPosition: 'right'
+         }
+         }).$mount(div)
+         const icon = vm.$el.querySelector('svg')
+         expect(getComputedStyle(icon).order).to.eq('2')
+         vm.$el.remove()
+         vm.$destroy()
+     })
+     it('点击 button 触发 click 事件', () => {
+         const Constructor = Vue.extend(Button)
+         const vm = new Constructor({
+         propsData: {
+             icon: 'settings',
+         }
+         }).$mount()
 
-     //测试事件
-     describe('事件', ()=>{
-        //用forEach循环
-        it('支持change/input/focus/blur事件.', () => {
-           ['change', 'input', 'focus', 'blur'].forEach((eventName)=>{
-                const Constructor = Vue.extend(Input)
-                const vm = new Constructor({
-            
-                }).$mount()
+         const callback = sinon.fake();
 
-                const callback = sinon.fake();
-                vm.$on(eventName, callback)
-                //触发change事件
-                let event = new Event(eventName)   //声明触发change时的事件
-                let inputElement = vm.$el.querySelector('input')
-                inputElement.dispatchEvent(event)
-                expect(callback).to.have.been.called.calledWith(event)   //预期被召唤回调并调用，同时调出change事件的第一个参数
-           })
-            
-        })
+         vm.$on('click', callback)
+         vm.$el.click()  //点击触发click事件
+         expect(callback).to.have.been.called
 
-
-
-
-        // it('支持change事件.', () => {
-        //     const Constructor = Vue.extend(Input)
-        //     const vm = new Constructor({
-            
-        //     }).$mount()
-
-        //     const callback = sinon.fake();
-        //     vm.$on('change', callback)
-        //     //触发change事件
-        //     let event = new Event('change')   //声明触发change时的事件
-        //     let inputElement = vm.$el.querySelector('input')
-        //     inputElement.dispatchEvent(event)
-        //     expect(callback).to.have.been.called.calledWith(event)   //预期被召唤回调并调用，同时调出change事件的第一个参数
-        // })
-        // it('支持input事件.', () => {
-        //     const Constructor = Vue.extend(Input)
-        //     const vm = new Constructor({
-            
-        //     }).$mount()
-
-        //     const callback = sinon.fake();
-        //     vm.$on('input', callback)
-        //     //触发change事件
-        //     let event = new Event('input')   //声明触发change时的事件
-        //     let inputElement = vm.$el.querySelector('input')
-        //     inputElement.dispatchEvent(event)
-        //     expect(callback).to.have.been.called.calledWith(event)   //预期被召唤回调并调用，同时调出change事件的第一个参数
-        // })
-        // it('支持focus事件.', () => {
-        //     const Constructor = Vue.extend(Input)
-        //     const vm = new Constructor({
-            
-        //     }).$mount()
-
-        //     const callback = sinon.fake();
-        //     vm.$on('focus', callback)
-        //     //触发change事件
-        //     let event = new Event('focus')   //声明触发change时的事件
-        //     let inputElement = vm.$el.querySelector('input')
-        //     inputElement.dispatchEvent(event)
-        //     expect(callback).to.have.been.called.calledWith(event)   //预期被召唤回调并调用，同时调出change事件的第一个参数
-        // })
-        // it('支持blur事件.', () => {
-        //     const Constructor = Vue.extend(Input)
-        //     const vm = new Constructor({
-            
-        //     }).$mount()
-
-        //     const callback = sinon.fake();
-        //     vm.$on('blur', callback)
-        //     //触发change事件
-        //     let event = new Event('blur')   //声明触发change时的事件
-        //     let inputElement = vm.$el.querySelector('input')
-        //     inputElement.dispatchEvent(event)
-        //     expect(callback).to.have.been.called.calledWith(event)   //预期被召唤回调并调用，同时调出change事件的第一个参数
-        // })
-    })
+     })
  })
