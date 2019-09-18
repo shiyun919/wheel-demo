@@ -42,6 +42,7 @@
 	.row {
 		display: flex;
 		margin-bottom: 12px;
+		flex-wrap: wrap-reverse;
 		&.align-left {
 			justify-content: flex-start;
 		}

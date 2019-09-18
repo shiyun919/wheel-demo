@@ -91,31 +91,6 @@
 <style lang="scss" scoped>
 	.col {
 
-		$class-prefix: col-; //class类名前缀
-
-		// loops through 24 times
-		@for $n from 1 through 24 {
-
-			// for each $col_#{n} 
-			&.#{$class-prefix}#{$n} {
-				width: ($n/24) * 100%;
-
-				// set the background-color to cornflowerblue and 
-				// each time lighten the color slightly
-				//background-color: darken(cornflowerblue, 0% + ($n / 2));
-			}
-		}
-
-
-
-		$class-prefix: offset-; //class类名前缀
-
-		@for $n from 1 through 24 {
-			&.#{$class-prefix}#{$n} {
-				margin-left: ($n/24) * 100%;
-			}
-		}
-
 		& .content {
 			padding: 25px 0px;
 		}
@@ -129,8 +104,8 @@
 			background: rgb(55, 141, 241);
 		}
 		
-		@media (max-width: 576px) {
-			$class-prefix: col-phone-; //class类名前缀
+	
+			$class-prefix: col-; //class类名前缀
 			
 			// loops through 24 times
 			@for $n from 1 through 24 {
@@ -142,15 +117,15 @@
 			}
 			
 			
-			$class-prefix: offset-phone-; //class类名前缀
+			$class-prefix: offset-; //class类名前缀
 			
 			@for $n from 1 through 24 {
 				&.#{$class-prefix}#{$n} {
 					margin-left: ($n/24) * 100%;
 				}
 			}
-		}
-		@media (min-width:577px) and (max-width: 768px) {
+		
+		@media (min-width:577px) {
 			$class-prefix: col-ipad-; //class类名前缀
 			
 			// loops through 24 times
@@ -171,7 +146,28 @@
 				}
 			}
 		}
-		@media (min-width:769px) and (max-width: 992px) {
+		@media (min-width:769px) {
+			$class-prefix: col-narrowerPc-; 
+			
+			// loops through 24 times
+			@for $n from 1 through 24 {
+			
+				// for each $col_#{n} 
+				&.#{$class-prefix}#{$n} {
+					width: ($n/24) * 100%;
+				}
+			}
+			
+			
+			$class-prefix: offset-narrowerPc-; 
+			
+			@for $n from 1 through 24 {
+				&.#{$class-prefix}#{$n} {
+					margin-left: ($n/24) * 100%;
+				}
+			}
+		}
+		@media (min-width:993px) {
 			$class-prefix: col-narrowerPc-; 
 			
 			// loops through 24 times
