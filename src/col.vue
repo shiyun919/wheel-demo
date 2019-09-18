@@ -96,12 +96,12 @@
 		}
 
 		&:nth-child(2n)>.content {
-			background: rgb(121, 183, 255);
+			background: #b2b3b5;
 
 		}
 
 		&:nth-child(2n+1)>.content {
-			background: rgb(55, 141, 241);
+			background: #ced0d2;
 		}
 		
 	

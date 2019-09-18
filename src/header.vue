@@ -10,7 +10,7 @@ export default {};
 
 <style lang="scss" scoped>
 .header {
-  background: rgb(121, 183, 255);
+  background: #b2b3b5;
   min-height: 100px;
 }
 </style>

@@ -10,7 +10,8 @@ export default {};
 
 <style lang="scss" scoped>
 .content {
-  background: #378df1;
+  background: #ced0d2;
+  
   min-height: 100px;
   flex-grow: 1;
 }
