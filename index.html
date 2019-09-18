@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="zh-Hans">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue造轮子</title>
     <style>
@@ -15,11 +16,12 @@
 
         #app {
             margin: 20px 20px;
-			max-width: 1200px;
-			margin: 0 auto;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        :root { /*把:root换成html 也同样可以*/
+        :root {
+            /*把:root换成html 也同样可以*/
             --button-height: 32px;
             --font-size: 14px;
             --button-background: #fff;
@@ -42,95 +44,140 @@
             fill: currentColor;
             overflow: hidden;
         }
+
         .box {
-            margin: 20px ;
+            margin: 20px;
         }
     </style>
 
 </head>
-<body>
-<div id="app">
-	<div class="box">
-        <h3 style="margin-bottom: 10px">无gutter</h3>
-        <g-row>
-			<g-col span="24" :ipad="{span: 12}" :narrower-pc="{span: 8}"></g-col>
-            <g-col span="24" :ipad="{span: 12}" :narrower-pc="{span: 8}"></g-col>
-            <g-col span="24" :ipad="{span: 12}" :narrower-pc="{span: 8}"></g-col>
-            <g-col span="24" :ipad="{span: 12}" :narrower-pc="{span: 8}"></g-col>
-            <g-col span="24" :ipad="{span: 12}" :narrower-pc="{span: 8}"></g-col>
-            <g-col span="24" :ipad="{span: 12}" :narrower-pc="{span: 8}"></g-col>
-		</g-row>
-		<g-row>
-			<g-col span="12" :ipad="{span: 8}" :narrower-pc="{span: 5}" :pc="{span: 2}"></g-col>
-			<g-col span="12" :ipad="{span: 16}" :narrower-pc="{span: 19}" :pc="{span: 22}"></g-col>
-		</g-row>
-		<g-row>
-			<g-col span="12"></g-col>
-			<g-col span="12"></g-col>
-		</g-row>
-		<g-row>
-			<g-col span="8"></g-col>
-			<g-col span="8"></g-col>
-			<g-col span="8"></g-col>
-		</g-row>
-		<g-row>
-			<g-col span="6"></g-col>
-			<g-col span="6"></g-col>
-			<g-col span="6"></g-col>
-			<g-col span="6"></g-col>
-		</g-row>
-		<g-row>
-			<g-col span="4"></g-col>
-			<g-col span="16" offset="4"></g-col>
-		</g-row>
-	</div>
-	<div class="box">
-        <h3 style="margin-bottom: 10px">设置gutter</h3>
-		<g-row gutter="20">
-			<g-col span="12"></g-col>
-			<g-col span="12"></g-col>
-		</g-row>
-		<g-row gutter="20">
-			<g-col span="8"></g-col>
-			<g-col span="8"></g-col>
-			<g-col span="8"></g-col>
-			<g-col span="8"></g-col>
-		</g-row>
-		<g-row gutter="20">
-			<g-col span="2"></g-col>
-			<g-col span="22"></g-col>
-		</g-row>
-	</div>
-    <div class="box">
-        <g-button v-bind:loading="loading1" v-on:click="loading1 = !loading1">按钮</g-button>
-        <g-button icon="settings" icon-position="left" v-bind:loading="loading2" v-on:click="loading2 = !loading2">设置</g-button>
-        <g-button icon="settings" icon-position="right" v-bind:loading="loading3" v-on:click="loading3 = !loading3">设置</g-button>
-        <g-button icon="download" >下载</g-button>
-        <!-- <g-icon name="download"></g-icon> -->
-        <g-button-group>
-            <g-button icon="left">上一页</g-button>
-            <g-button icon="right" icon-position="right">下一页</g-button>
-        </g-button-group>
-    </div>
-    
-    <div class="box">
-        <g-input value="张三"></g-input>
-        <g-input value="李四" disabled></g-input>
-        <!-- <g-input value="李四" v-bind:disabled="true"></g-input> -->
-        <g-input value="王五" readonly></g-input>
-        <!-- <g-input value="王五" v-bind:readonly="true"></g-input> -->
-        
-    </div>
-    <div class="box">
-        <g-input value="赵" error="姓名不能少于两个字"></g-input>
-    </div>
-    <div class="box">
-        <g-input value="赵" v-on:change="inputChange"></g-input>
-    </div>
-</div>
 
-<script src="./src/app.js"></script>
-<script src="//at.alicdn.com/t/font_1339968_i7r8lfcxll.js"></script>
+<body>
+    <div id="app">
+        <div class="box">
+            <g-layout style="height: 100vh">
+                <g-header>header</g-header>
+                <g-content>content</g-content>
+                <g-footer>footer</g-footer>
+            </g-layout>
+        </div>
+        <div class="box">
+            <g-layout style="height: 100vh">
+                <g-header>header</g-header>
+                <g-layout>
+                    <g-sider>sider</g-sider>
+                    <g-content>content</g-content>
+                </g-layout>
+
+                <g-footer>footer</g-footer>
+            </g-layout>
+        </div>
+        <div class="box">
+            <g-layout style="height: 100vh">
+                <g-header>header</g-header>
+                <g-layout>
+                    <g-content>content</g-content>
+                    <g-sider>sider</g-sider>
+                </g-layout>
+                <g-footer>footer</g-footer>
+            </g-layout>
+        </div>
+        <div class="box">
+            <g-layout style="height: 100vh">
+                <g-sider>sider</g-sider>
+
+                <g-layout>
+                    <g-header>header</g-header>
+                    <g-content>content</g-content>
+                    <g-footer>footer</g-footer>
+                </g-layout>
+
+            </g-layout>
+        </div>
+        <div class="box">
+            <h3 style="margin-bottom: 10px">无gutter</h3>
+            <g-row>
+                <g-col span="24" :ipad="{span: 12}" :narrower-pc="{span: 8}"></g-col>
+                <g-col span="24" :ipad="{span: 12}" :narrower-pc="{span: 8}"></g-col>
+                <g-col span="24" :ipad="{span: 12}" :narrower-pc="{span: 8}"></g-col>
+                <g-col span="24" :ipad="{span: 12}" :narrower-pc="{span: 8}"></g-col>
+                <g-col span="24" :ipad="{span: 12}" :narrower-pc="{span: 8}"></g-col>
+                <g-col span="24" :ipad="{span: 12}" :narrower-pc="{span: 8}"></g-col>
+            </g-row>
+            <g-row>
+                <g-col span="12" :ipad="{span: 8}" :narrower-pc="{span: 5}" :pc="{span: 2}"></g-col>
+                <g-col span="12" :ipad="{span: 16}" :narrower-pc="{span: 19}" :pc="{span: 22}"></g-col>
+            </g-row>
+            <g-row>
+                <g-col span="12"></g-col>
+                <g-col span="12"></g-col>
+            </g-row>
+            <g-row>
+                <g-col span="8"></g-col>
+                <g-col span="8"></g-col>
+                <g-col span="8"></g-col>
+            </g-row>
+            <g-row>
+                <g-col span="6"></g-col>
+                <g-col span="6"></g-col>
+                <g-col span="6"></g-col>
+                <g-col span="6"></g-col>
+            </g-row>
+            <g-row>
+                <g-col span="4"></g-col>
+                <g-col span="16" offset="4"></g-col>
+            </g-row>
+        </div>
+        <div class="box">
+            <h3 style="margin-bottom: 10px">设置gutter</h3>
+            <g-row gutter="20">
+                <g-col span="12"></g-col>
+                <g-col span="12"></g-col>
+            </g-row>
+            <g-row gutter="20">
+                <g-col span="8"></g-col>
+                <g-col span="8"></g-col>
+                <g-col span="8"></g-col>
+                <g-col span="8"></g-col>
+            </g-row>
+            <g-row gutter="20">
+                <g-col span="2"></g-col>
+                <g-col span="22"></g-col>
+            </g-row>
+        </div>
+        <div class="box">
+            <g-button v-bind:loading="loading1" v-on:click="loading1 = !loading1">按钮</g-button>
+            <g-button icon="settings" icon-position="left" v-bind:loading="loading2" v-on:click="loading2 = !loading2">
+                设置</g-button>
+            <g-button icon="settings" icon-position="right" v-bind:loading="loading3" v-on:click="loading3 = !loading3">
+                设置</g-button>
+            <g-button icon="download">下载</g-button>
+            <!-- <g-icon name="download"></g-icon> -->
+            <g-button-group>
+                <g-button icon="left">上一页</g-button>
+                <g-button icon="right" icon-position="right">下一页</g-button>
+            </g-button-group>
+        </div>
+
+        <div class="box">
+            <g-input value="张三"></g-input>
+            <g-input value="李四" disabled></g-input>
+            <!-- <g-input value="李四" v-bind:disabled="true"></g-input> -->
+            <g-input value="王五" readonly></g-input>
+            <!-- <g-input value="王五" v-bind:readonly="true"></g-input> -->
+
+        </div>
+        <div class="box">
+            <g-input value="赵" error="姓名不能少于两个字"></g-input>
+        </div>
+        <div class="box">
+            <g-input value="赵" v-on:change="inputChange"></g-input>
+        </div>
+    </div>
+
+    <script src="./src/app.js"></script>
+    <script src="//at.alicdn.com/t/font_1339968_i7r8lfcxll.js"></script>
 
 </body>
+
 </html>
