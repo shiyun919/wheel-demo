@@ -10,6 +10,11 @@ import Header from './header'
 import Sider from './sider'
 import Content from './content'
 import Footer from './footer'
+import Tabs from './tabs'
+import tabsNav from './tabs-nav'
+import tabsItem from './tabs-item'
+import tabsBody from './tabs-body'
+import tabsPane from './tabs-pane'
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -22,6 +27,12 @@ Vue.component('g-header', Header)
 Vue.component('g-sider', Sider)
 Vue.component('g-content', Content)
 Vue.component('g-footer', Footer)
+
+Vue.component('g-tabs', Tabs)
+Vue.component('g-tabs-nav', tabsNav)
+Vue.component('g-tabs-item', tabsItem)
+Vue.component('g-tabs-body', tabsBody)
+Vue.component('g-tabs-pane', tabsPane)
 
 
 new Vue({
