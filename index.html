@@ -55,11 +55,14 @@
 <body>
     <div id="app">
         <div class="box">
-            <g-tabs>
+            <g-tabs :selected.sync="selectedTab">
                 <g-tabs-nav>
-                    <g-tabs-item name="woman">美女</g-tabs-item>
-                    <g-tabs-item name="news">新闻</g-tabs-item>
+                    <g-tabs-item name="woman"><g-icon name="settings"></g-icon>美女</g-tabs-item>
+                    <g-tabs-item name="news" disabled>新闻</g-tabs-item>
                     <g-tabs-item name="sports">体育</g-tabs-item>
+                    <template slot="actions">
+                        <g-button>设置</g-button>
+                    </template>
                 </g-tabs-nav>
                 <g-tabs-body>
                     <g-tabs-pane name="woman">美女相关资讯</g-tabs-pane>

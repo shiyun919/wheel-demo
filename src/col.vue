@@ -26,7 +26,7 @@
 							valid = false
 						}
 					})
-					return
+					return valid
 				}
 				
 			},
@@ -40,7 +40,7 @@
 							valid = false
 						}
 					})
-					return
+					return valid
 				}
 				
 			},
