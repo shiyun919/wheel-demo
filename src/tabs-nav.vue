@@ -1,7 +1,10 @@
 <template>
     <div class="tabs-nav">
         <slot></slot>
-        <slot name="actions"></slot>
+		<div class="button">
+			<slot name="actions"></slot>
+		</div>
+        
     </div>
 </template>
 
@@ -18,6 +21,9 @@ export default {
 
 <style lang="scss" scoped>
     .tabs-nav {
-        
+        display: flex;
+		> .button {
+			margin-left: auto;
+		}
     }
 </style>

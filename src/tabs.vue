@@ -35,7 +35,8 @@ export default {
         
     },
     created(){
-        //this.$emit('update:selected', 'xxx')
+        //this.$emit('update:selected', '这是this.$emit出来的事件')
+		this.eventBus.$emit('update:selected', '这是this.eventBus.$emit出来的事件')
     },
     
 
