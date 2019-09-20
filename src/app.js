@@ -38,12 +38,16 @@ Vue.component('g-tabs-pane', tabsPane)
 new Vue({
     el: '#app',
     data: {
-        selectedTab: 'sports',
+        selectedTab: 'woman',
         loading1: false,
         loading2: false,
         loading3: false
     },
     methods: {
+        yyy(data){
+           console.log('yyy')
+           console.log(data)
+        },
         inputChange: function(e){
             console.log(e.target.value)
         }

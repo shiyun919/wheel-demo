@@ -55,8 +55,8 @@
 <body>
     <div id="app">
         <div class="box">
-			<g-tabs selected="selectedTab" @updata:selected="selectedTab=$event"></g-tabs>
-            <!-- <g-tabs :selected.sync="selectedTab"> -->
+			<!-- <g-tabs selected="selectedTab" @updata:selected="selectedTab=$event"></g-tabs> -->
+            <g-tabs :selected.sync="selectedTab" @updata:selected="yyy">
                 <g-tabs-nav>
                     <g-tabs-item name="woman">tab1</g-tabs-item>
                     <g-tabs-item name="news" disabled>tab2</g-tabs-item>

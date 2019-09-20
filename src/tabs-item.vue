@@ -1,5 +1,5 @@
 <template>
-    <div class="tabs-item"  @click="xxx">
+    <div class="tabs-item" :class="className" @click="xxx">
         <slot></slot>
     </div>
 </template>
@@ -22,16 +22,25 @@ export default {
 		return {
 			active: false
 		}
-	},
+    },
+    computed: {
+        className(){
+            return {
+                active: this.active
+            }
+        }
+    },
     created(){
-       // console.log('爷爷给孙子的eventBus')
+        //console.log('爷爷给孙子的eventBus')
         //console.log(this.eventBus)
         this.eventBus.$on('update:selected', (name)=>{
-            console.log(name)
+            //console.log(name)
 			if(name === this.name){
-				console.log('我${this.name}被选中')
+				//console.log(`我${this.name}被选中`)
+                this.active = true
 			}else{
-				console.log('我${this.name}没被选中')
+				//console.log(`我${this.name}没被选中`)
+                this.active = false
 			}
 				
         })
@@ -53,5 +62,8 @@ methods: {
 		&:first-child {
 			margin-left: 0px;
 		}
+        &.active {
+            background: #ddd;
+        }
     }
 </style>
